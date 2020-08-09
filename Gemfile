@@ -19,6 +19,6 @@ group :development do
   gem 'lefthook'
   gem 'rubocop'
   gem 'rubocop-rspec'
-  gem 'solargraph'
   gem 'shotgun'
+  gem 'solargraph'
 end
