@@ -6,6 +6,8 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'codebreaker', github: 'Ar2emis/RubyCodebreaker'
 gem 'rack'
+gem 'slim'
+gem 'tilt'
 
 group :test do
   gem 'faker'
