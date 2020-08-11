@@ -19,7 +19,7 @@ hr.mb-4/
         td = stats.difficulty.name
         td #{stats.difficulty.attempts - stats.attempts}/#{stats.difficulty.attempts}
         td #{stats.difficulty.hints - stats.hints}/#{stats.difficulty.hints}
-        td = stats.date
+        td = stats.date.strftime('%Y.%m.%d - %H:%M')
 - else
   p.lead.m-4 No statistic yet...
 hr.mb-4/

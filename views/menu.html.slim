@@ -10,9 +10,9 @@ form action="/game" method="post"
     label.lead.label for="level"  Game level:
     select.custom-select name="level" required="" 
       option value=""  Choose game level...
-      option value="#{Codebreaker::Difficulty.difficulties(:easy).name}"  = Codebreaker::Difficulty.difficulties(:easy).name
-      option value="#{Codebreaker::Difficulty.difficulties(:medium).name}"  = Codebreaker::Difficulty.difficulties(:medium).name
-      option value="#{Codebreaker::Difficulty.difficulties(:hell).name}"  = Codebreaker::Difficulty.difficulties(:hell).name
+      option value="easy"  = Codebreaker::Difficulty.difficulties(:easy).name
+      option value="medium"  = Codebreaker::Difficulty.difficulties(:medium).name
+      option value="hell"  = Codebreaker::Difficulty.difficulties(:hell).name
   hr.mb-4/
   button.btn.btn-primary.btn-lg type="submit" 
     | Start the game!
