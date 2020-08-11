@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Ar2emis/RubyCodebreaker
-  revision: a1f469d28d58c51453f2dcc7cd14c737c8f3bd66
+  revision: 5085a900604653153506e276c94d32467cc752e7
   specs:
     codebreaker (0.1.0)
       i18n
@@ -11,6 +11,7 @@ GEM
     ast (2.4.1)
     backport (1.1.2)
     benchmark (0.1.0)
+    coderay (1.1.3)
     colorize (0.8.1)
     concurrent-ruby (1.1.7)
     diff-lcs (1.4.4)
@@ -26,12 +27,16 @@ GEM
     jaro_winkler (1.5.4)
     lefthook (0.7.2)
     maruku (0.7.3)
+    method_source (1.0.0)
     mini_portile2 (2.4.0)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -53,13 +58,13 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    rubocop (0.89.0)
+    rubocop (0.89.1)
       parallel (~> 1.10)
       parser (>= 2.7.1.1)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.7)
       rexml
-      rubocop-ast (>= 0.1.0, < 1.0)
+      rubocop-ast (>= 0.3.0, < 1.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (0.3.0)
@@ -107,6 +112,7 @@ DEPENDENCIES
   faker
   fasterer
   lefthook
+  pry
   rack
   rack-test
   rspec
