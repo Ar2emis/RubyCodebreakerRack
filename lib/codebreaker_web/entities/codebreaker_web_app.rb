@@ -42,9 +42,13 @@ module CodebreakerWeb
     end
 
     def game
-      return redirect('/') if @game.nil? && (@request.params['player_name'].nil? || @request.params['level'].nil?)
+      return redirect('/') if @game.nil? && game_params_empty?
 
       @game.nil? ? start_game : continue_game
+      if @game.win? then redirect('/win')
+      elsif @game.lose? then redirect('/lose')
+      else game_response
+      end
     end
 
     def rules
@@ -67,29 +71,28 @@ module CodebreakerWeb
     end
 
     def hint
-      redirect('/') if @game.nil?
+      return redirect('/') if @game.nil?
+      return redirect('/game') unless @game.hints_amount.positive?
 
-      hint = @game.take_hint
-      @hints.nil? ? @request.session[:hints] = [hint] : @hints << hint
+      @request.session[:hints] = @hints << @game.take_hint
       redirect('/game')
     end
 
     def restart
+      return redirect('/') if @game.nil?
+
       @request.session.clear
-      puts(@game.attempts_amount)
       @game.restart
-      puts(@game.attempts_amount)
       @request.session[:game] = @game
       redirect('/game')
     end
 
     def start_game
       user = Codebreaker::User.new(@request.params['player_name'])
-      difficulty = Codebreaker::Difficulty.difficulties(@request.params['level'].to_sym)
+      difficulty = Codebreaker::Difficulty.difficulties(@request.params['level'].split.first.downcase.to_sym)
       @game = Codebreaker::Game.new(difficulty, user)
       @game.start
       @request.session[:game] = @game
-      game_response
     end
 
     def continue_game
@@ -97,14 +100,14 @@ module CodebreakerWeb
 
       @answer = @game.make_turn(Codebreaker::Guess.new(@request.params['number']))
       @request.session[:answer] = @answer
-      if @game.win? then redirect('/win')
-      elsif @game.lose? then redirect('/lose')
-      else game_response
-      end
     end
 
     def game_response
       create_response('game', game: @game, hints: @hints, answer: @answer)
+    end
+
+    def game_params_empty?
+      @request.params['player_name'].nil? || @request.params['level'].nil?
     end
 
     def redirect(page)

@@ -10,7 +10,9 @@ gem 'slim'
 gem 'tilt'
 
 group :test do
+  gem 'capybara'
   gem 'faker'
+  gem 'rack_session_access'
   gem 'rack-test'
   gem 'rspec'
   gem 'simplecov'
