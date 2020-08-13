@@ -10,11 +10,11 @@ gem 'codebreaker', github: 'Ar2emis/RubyCodebreaker'
 gem 'rack'
 gem 'slim'
 gem 'tilt'
+gem 'rack_session_access'
 
 group :test do
   gem 'capybara'
   gem 'faker'
-  gem 'rack_session_access'
   gem 'rack-test'
   gem 'rspec'
   gem 'simplecov'
