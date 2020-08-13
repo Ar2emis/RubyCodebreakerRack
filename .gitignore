@@ -2,5 +2,4 @@
 
 /.bundle/
 /vendor/bundle
-/node_modules/
 /db/
