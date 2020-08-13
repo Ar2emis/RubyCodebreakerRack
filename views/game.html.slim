@@ -1,4 +1,4 @@
-p.lead
+p.lead.text-white
   | Hello, #{game.user.name}!
   | Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.
 hr.mb-4/
@@ -27,18 +27,14 @@ form action="/game" method="post"
     input.form-control.guess_input autocomplete="off" name="number" pattern="^[1-6]{4}$" placeholder="1234" required="" /
   .form-group.guess_markers_list
     #guess_marker
-    - if answer.nil?
-      - Codebreaker::CodeGenerator::DEFAULT_CODE_LENGTH.times do
-        button.btn.btn-danger.marks disabled="" type="button"  x
-    - else
-      #guess_marker
+    - unless answer.nil?
       - answer.chars.each do |char|
         - if char == '+'
           button.btn.btn-success.marks disabled="" type="button"  +
-        - elsif char == '-'
+        - else char == '-'
           button.btn.btn-primary.marks disabled="" type="button"  -
-        - else
-          button.btn.btn-danger.marks disabled="" type="button"  x
+      - (Codebreaker::CodeGenerator::DEFAULT_CODE_LENGTH - answer.length).times do
+        button.btn.btn-danger.marks disabled="" type="button"  x
   hr.mb-4/
   button.btn.btn-primary.btn-lg type="submit" 
     | Submit
