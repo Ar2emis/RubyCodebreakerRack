@@ -24,7 +24,7 @@ hr.mb-4/
 hr.mb-4/
 form action="/game" method="post" 
   .form-group
-    input.form-control.guess_input autocomplete="off" name="number" pattern="^[1-6]{4}$" placeholder="1234" required="" /
+    input.form-control.guess_input autocomplete="off" name="number" pattern="^[1-6]{4}$" placeholder="#{guess.nil? ? '1234' : guess}" required="" /
   .form-group.guess_markers_list
     #guess_marker
     - unless answer.nil?

@@ -2,26 +2,24 @@
 
 module CodebreakerWeb
   class CodebreakerWebApp
-    COMMANDS = {
-      '' => :menu,
-      'statistics' => :statistics,
-      'game' => :game,
-      'rules' => :rules,
-      'lose' => :lose,
-      'win' => :win,
-      'hint' => :hint,
-      'restart' => :restart
-    }.freeze
+    COMMANDS = { '' => :menu,
+                 'statistics' => :statistics,
+                 'game' => :game,
+                 'rules' => :rules,
+                 'lose' => :lose,
+                 'win' => :win,
+                 'hint' => :hint,
+                 'restart' => :restart }.freeze
 
     def self.call(env)
       new(env).response.finish
     end
 
     def initialize(env)
-      @env = env
-      @request = Rack::Request.new(@env)
+      @request = Rack::Request.new(env)
       @game = @request.session[:game]
       @hints = @request.session[:hints].nil? ? [] : @request.session[:hints]
+      @guess = @request.session[:guess]
       @answer = @request.session[:answer]
     end
 
@@ -98,12 +96,14 @@ module CodebreakerWeb
     def continue_game
       return game_response if @request.params['number'].nil?
 
-      @answer = @game.make_turn(Codebreaker::Guess.new(@request.params['number']))
+      @guess = @request.params['number']
+      @request.session[:guess] = @guess
+      @answer = @game.make_turn(Codebreaker::Guess.new(@guess))
       @request.session[:answer] = @answer
     end
 
     def game_response
-      create_response('game', game: @game, hints: @hints, answer: @answer)
+      create_response('game', game: @game, hints: @hints, answer: @answer, guess: @guess)
     end
 
     def game_params_empty?
