@@ -1,6 +1,6 @@
 GIT
-  remote: https://4d741f4f5dbef9d7d0b8afc7a80447816344d2ff:x-oauth-basic@github.com/Ar2emis/RubyCodebreaker
-  revision: 5085a900604653153506e276c94d32467cc752e7
+  remote: https://github.com/Ar2emis/RubyCodebreaker
+  revision: 006379b1c0cf0bc090c1f22fe5c11eaf252620fb
   specs:
     codebreaker (0.1.0)
       i18n
@@ -80,20 +80,20 @@ GEM
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (0.3.0)
       parser (>= 2.7.1.4)
-    rubocop-rspec (1.42.0)
-      rubocop (>= 0.87.0)
+    rubocop-rspec (1.43.1)
+      rubocop (~> 0.87)
     ruby-progressbar (1.10.1)
     ruby_parser (3.14.2)
       sexp_processor (~> 4.9)
     sexp_processor (4.15.0)
-    simplecov (0.18.5)
+    simplecov (0.19.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
-    solargraph (0.39.14)
+    solargraph (0.39.15)
       backport (~> 1.1)
       benchmark
       bundler (>= 1.17.2)

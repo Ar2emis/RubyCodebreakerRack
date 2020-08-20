@@ -10,7 +10,7 @@ form action="/game" method="post"
     label.lead.label for="level"  Game level:
     select.custom-select name="level" required="" 
       option id="" value=""  Choose game level...
-      - [:easy, :medium, :hell].each do |difficulty_symbol|
+      - [Codebreaker::Difficulty::EASY, Codebreaker::Difficulty::MEDIUM, Codebreaker::Difficulty::HELL].each do |difficulty_symbol|
         - difficulty = Codebreaker::Difficulty.difficulties(difficulty_symbol)
         option id="#{difficulty_symbol}" 
           | #{difficulty.name} - #{difficulty.attempts} attempts - #{difficulty.hints} hints

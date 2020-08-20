@@ -9,4 +9,7 @@ require 'slim'
 
 require 'codebreaker'
 
+require_relative 'modules/web_helper'
+
+require_relative 'entities/game_web'
 require_relative 'entities/codebreaker_web_app'

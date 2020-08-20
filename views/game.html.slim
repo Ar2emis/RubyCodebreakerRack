@@ -4,12 +4,12 @@ p.lead.text-white
 hr.mb-4/
 .row
   .col.button
-    button.btn.btn-primary disabled="" type="button" 
+    button.btn.btn-primary type="button" 
       | Level: 
       span.badge.badge-light
         | #{game.difficulty.name}
   .col.text-center.button
-    button.btn.btn-primary disabled="" type="button" 
+    button.btn.btn-primary type="button" 
       | Attempts: 
       span.badge.badge-light #{game.attempts_amount}
   .col.button
@@ -18,20 +18,21 @@ hr.mb-4/
       | Hints: 
       span.badge.badge-light #{game.hints_amount}
   - else
-    button.btn.btn-primary.float-right disabled="" type="button"
+    button.btn.btn-primary.float-right type="button"
       | Hints: 
       span.badge.badge-light #{game.hints_amount}
 hr.mb-4/
 form action="/game" method="post" 
   .form-group
-    input.form-control.guess_input autocomplete="off" name="number" pattern="^[1-6]{4}$" placeholder="#{guess.nil? ? '1234' : guess}" required="" /
+    input.form-control.guess_input autofocus="" autocomplete="off" name="number" pattern="^[1-6]{4}$" placeholder="#{guess.nil? ? '1234' : guess}" required="" /
   .form-group.guess_markers_list
     #guess_marker
     - unless answer.nil?
       - answer.chars.each do |char|
-        - if char == '+'
+        - case char
+        - when '+'
           button.btn.btn-success.marks disabled="" type="button"  +
-        - else char == '-'
+        - when '-'
           button.btn.btn-primary.marks disabled="" type="button"  -
       - (Codebreaker::CodeGenerator::DEFAULT_CODE_LENGTH - answer.length).times do
         button.btn.btn-danger.marks disabled="" type="button"  x
