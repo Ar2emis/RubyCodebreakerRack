@@ -19,7 +19,7 @@ hr.mb-4/
         | Oops, #{game.user.name}! You lose the game!
       h4.text-white
         | The code was
-        strong #{game.code}
+        strong = game.code
     img.img-fluid alt=("You lose the game!") src="assets/images/lost.gif" /
 hr.mb-4/
 a.btn.btn-primary.btn-lg href="/restart" role="button" 

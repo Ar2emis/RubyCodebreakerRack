@@ -6,21 +6,20 @@ hr.mb-4/
   .col.button
     button.btn.btn-primary type="button" 
       | Level: 
-      span.badge.badge-light
-        | #{game.difficulty.name}
+      span.badge.badge-light = game.difficulty.name
   .col.text-center.button
     button.btn.btn-primary type="button" 
       | Attempts: 
-      span.badge.badge-light #{game.attempts_amount}
+      span.badge.badge-light = game.attempts_amount
   .col.button
   - if game.hints_amount.positive?
     button.btn.btn-primary.float-right type="button"
       | Hints: 
-      span.badge.badge-light #{game.hints_amount}
+      span.badge.badge-light = game.hints_amount
   - else
     button.btn.btn-primary.float-right type="button"
       | Hints: 
-      span.badge.badge-light #{game.hints_amount}
+      span.badge.badge-light = game.hints_amount
 hr.mb-4/
 form action="/game" method="post" 
   .form-group
@@ -31,11 +30,11 @@ form action="/game" method="post"
       - answer.chars.each do |char|
         - case char
         - when '+'
-          button.btn.btn-success.marks disabled="" type="button"  +
+          button.btn.btn-success.marks type="button"  +
         - when '-'
           button.btn.btn-primary.marks disabled="" type="button"  -
       - (Codebreaker::CodeGenerator::DEFAULT_CODE_LENGTH - answer.length).times do
-        button.btn.btn-danger.marks disabled="" type="button"  x
+        button.btn.btn-danger.marks type="button"  x
   hr.mb-4/
   button.btn.btn-primary.btn-lg type="submit" 
     | Submit
