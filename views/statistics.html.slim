@@ -1,0 +1,27 @@
+p.lead.text-white-70 Top of Players:
+hr.mb-4/
+.table-responsive-md.scores
+- if Codebreaker::Game.user_statistic.any?
+  table.table.table-striped.table.table-sm.text-white
+    thead
+      tr
+        th scope="col"  #
+        th scope="col"  Name
+        th scope="col"  Level
+        th scope="col"  Attempts Left
+        th scope="col"  Hints Left
+        th scope="col"  Date
+    tbody
+    - Codebreaker::Game.user_statistic.each_with_index do |stats, index|
+      tr
+        th scope="row" = index + 1
+        td = stats.user.name
+        td = stats.difficulty.name
+        td #{stats.difficulty.attempts - stats.attempts}/#{stats.difficulty.attempts}
+        td #{stats.difficulty.hints - stats.hints}/#{stats.difficulty.hints}
+        td = stats.date.strftime('%Y.%m.%d - %H:%M')
+- else
+  p.lead.m-4 No statistic yet...
+hr.mb-4/
+a.btn.btn-primary.btn-lg href="/" role="button" 
+  | Home

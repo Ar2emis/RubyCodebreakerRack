@@ -10,6 +10,10 @@ Layout/LineLength:
 Style/Documentation:
   Enabled: false
 
+Security/Eval:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/*/*spec.rb'

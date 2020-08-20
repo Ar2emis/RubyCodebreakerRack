@@ -1,0 +1,26 @@
+.row
+  .col.button
+    button.btn.btn-primary disabled="" type="button" 
+      | Level:
+      span.badge.badge-light
+        | #{game.difficulty.name}
+    button.btn.btn-primary disabled="" type="button" 
+      | Attempts Left:
+      span.badge.badge-light
+        | #{game.attempts_amount}/#{game.difficulty.attempts}
+    button.btn.btn-primary disabled="" type="button" 
+      | Hints Left:
+      span.badge.badge-light
+        | #{game.hints_amount}/#{game.difficulty.hints}
+hr.mb-4/
+.row
+  .text-center
+    .text-center
+      h3.text-white
+        | Congratulations, #{game.user.name}! You won the game!
+    img.img-fluid alt=("You won the game!") src="assets/images/won.gif" /
+hr.mb-4/
+a.btn.btn-primary.btn-lg href="/restart" role="button" 
+  | Play again!
+a.btn.btn-success.btn-lg.float-right href="/statistics" role="button" 
+  | Statistics
