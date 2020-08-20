@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/Ar2emis/RubyCodebreaker
+  remote: https://4d741f4f5dbef9d7d0b8afc7a80447816344d2ff:x-oauth-basic@github.com/Ar2emis/RubyCodebreaker
   revision: 006379b1c0cf0bc090c1f22fe5c11eaf252620fb
   specs:
     codebreaker (0.1.0)
